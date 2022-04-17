@@ -18,11 +18,50 @@ article{
   width: 90%;
   min-width: 300px;
   max-width: 375px;
-  height: 100vh;
+  height: 90vh;
   @include hideScroll('&');
   overflow-y: auto;
 }
 body{
   background-color: $black;
   color: $white;
+}
+.done{
+  color: rgba(238, 238, 238, 0.5);
+  text-decoration: line-through;
+}
+.bi-plus-square-dotted{
+  color: $confirm;
+}
+.bi-check2-square{
+  color: $confirm;
+}
+.bi-trash{
+  color:$red;
+}
+.accordion-item{
+  background-color: unset;
+}
+.accordion-button{
+  color: $white;
+  display: flex;
+  &:focus {
+    border-color: $gold;
+    outline: 0;
+    box-shadow: unset;
+  }
+  &::after{
+    margin-right: auto;
+    margin-left: 0;background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23eee'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");}
+}
+.accordion-button:not(.collapsed) {
+  color: $gold;
+  background-color: unset;
+  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+  &::after{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffc85b'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  }
+}
+.accordion-body{
+  background-color: rgba(238, 238, 238, 0.05);
 }
