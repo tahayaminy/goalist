@@ -1,0 +1,28 @@
+@mixin hideScroll($el){
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  #{$el}::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  #{$el} {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+}
+$black:#364f6b;
+$red:#fc5185;
+$confirm:#379956;
+$white:#eeeeee;
+$gold:#ffc85b;
+article{
+  width: 90%;
+  min-width: 300px;
+  max-width: 375px;
+  height: 100vh;
+  @include hideScroll('&');
+  overflow-y: auto;
+}
+body{
+  background-color: $black;
+  color: $white;
+}
