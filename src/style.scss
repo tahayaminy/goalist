@@ -14,6 +14,24 @@ $red:#fc5185;
 $confirm:#379956;
 $white:#eeeeee;
 $gold:#ffc85b;
+.month{
+  color:#e2eafc;
+}
+.month3{
+  color:#d7e3fc;
+}
+.month6{
+  color:#ccdbfd;
+}
+.year{
+  color:#c1d3fe;
+}
+.year3{
+  color:#b6ccfe;
+}
+.year5{
+  color:#abc4ff;
+}
 article{
   width: 90%;
   min-width: 300px;
@@ -25,6 +43,70 @@ article{
 body{
   background-color: $black;
   color: $white;
+}
+.modal-content{
+  color:$black;
+  background-color: $white;
+  .modal-header .btn-close {
+    margin-right: auto;
+    margin-left: 0;
+  }
+  .btn-close:focus {
+    box-shadow: 0 0 0 0.25rem rgba(54, 79, 107, 0.25);
+  }
+  .form-control:focus {
+    color: $black;
+    caret-color: $black;
+    background-color: #fff;
+    border-color: $gold;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(255, 200, 91, 0.25);
+  }
+  .dropdown-menu{
+    background-color: $black;
+    .dropdown-item{
+      transition: .2s ease-out;
+      &:hover{
+        color: $black;
+        background-color: $gold;
+      }
+    }
+  }
+  .btn-period{
+    color: $gold;
+    border-color: $gold;
+    &:hover,&:focus{
+      color: $black;
+      background-color: $gold;
+    }
+    &:focus{
+      box-shadow: 0 0 0 0.25rem rgba(255, 200, 91, 0.5);
+    }
+  }
+  .modal-footer{
+    .btn-save{
+      color: $confirm;
+      border-color: $confirm;
+      &:hover,&:focus{
+        color: $white;
+        background-color: $confirm;
+      }
+      &:focus{
+        box-shadow: 0 0 0 0.25rem rgba(55, 153, 86, 0.5);
+      }
+    }
+    .btn-rescind{
+      color: $black;
+      border-color: $black;
+      &:hover,&:focus{
+        color: $white;
+        background-color: $black;
+      }
+      &:focus{
+        box-shadow: 0 0 0 0.25rem rgba(54, 79, 107, 0.5);
+      }
+    }
+  }
 }
 .done{
   color: rgba(238, 238, 238, 0.5);
@@ -43,7 +125,6 @@ body{
   background-color: unset;
 }
 .accordion-button{
-  color: $white;
   display: flex;
   &:focus {
     border-color: $gold;

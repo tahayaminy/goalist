@@ -41,24 +41,28 @@ const $ = el => {
     return document.querySelector(el);
 }
 let pd=new ParsiDate();
-function createHtml(list,btn,todoCont,doneCont) {
+function createHtml(name,btn,todoCont,doneCont,id) {
+    let list=Goalist[name];
     let todo = '';
     let done='';
     let i=0;
+    let c=0;
     for (let item of list.arr) {
         if(!item.status){
             let html = `
             <li class="flex my-2 border-b py-2 ">
                 <span>${item.title}</span>
-                <i class="bi bi-check2-square mr-auto cursor-pointer"></i>
-                <i class="bi bi-trash mr-7 cursor-pointer"></i>
+                <i onclick="done('${name}',${c})" class="bi bi-check2-square mr-auto cursor-pointer"></i>
+                <i onclick="del(this,'${name}',${c})" class="bi bi-trash mr-7 cursor-pointer"></i>
             </li>
         `;
             todo += html;
             i++;
+            c++;
         }else{
             let html=`<li>${item.title}</li>`;
             done +=html;
+            c++;
         }
     }
     $(btn+" .length").innerText=i;
@@ -67,43 +71,71 @@ function createHtml(list,btn,todoCont,doneCont) {
     $(doneCont).innerHTML=done;
 }
 
-for (let list in Goalist) {
-    switch (list) {
-        case "month":
-            createHtml(Goalist[list],
-                "#headingOne button",
-                "#collapseOne .todo",
-                "#collapseOne .done");
+function del(el,name,id){
+    el.parentElement.remove();
+    Goalist[name].arr.splice(id,1);
+    writeGoals();
+}
+function done(name,id){
+    Goalist[name].arr[id].status=true;
+    writeGoals();
+}
+function writeGoals(){
+    for (let list in Goalist) {
+        switch (list) {
+            case "month":
+                createHtml("month",
+                    "#headingOne button",
+                    "#collapseOne .todo",
+                    "#collapseOne .done");
+                break;
+            case "month3":
+                createHtml("month3",
+                    "#headingTwo button",
+                    "#collapseTwo .todo",
+                    "#collapseTwo .done");
+                break;
+            case "month6":
+                createHtml("month6",
+                    "#headingThree button",
+                    "#collapseThree .todo",
+                    "#collapseThree .done");
+                break;
+            case "year":
+                createHtml("year",
+                    "#headingFour button",
+                    "#collapseFour .todo",
+                    "#collapseFour .done");
+                break;
+            case "year3":
+                createHtml("year3",
+                    "#headingFive button",
+                    "#collapseFive .todo",
+                    "#collapseFive .done");
+                break;
+            case "year5":
+                createHtml("year5",
+                    "#headingSix button",
+                    "#collapseSix .todo",
+                    "#collapseSix .done");
+                break;
+        }
+    }
+}
+writeGoals();
+function add(){
+    let name=document.getElementsByName("period");
+    for(let item of name){
+        if(item.checked){
+            name=item.value;
             break;
-        case "month3":
-            createHtml(Goalist[list],
-                "#headingTwo button",
-                "#collapseTwo .todo",
-                "#collapseTwo .done");
-            break;
-        case "month6":
-            createHtml(Goalist[list],
-                "#headingThree button",
-                "#collapseThree .todo",
-                "#collapseThree .done");
-            break;
-        case "year":
-            createHtml(Goalist[list],
-                "#headingFour button",
-                "#collapseFour .todo",
-                "#collapseFour .done");
-            break;
-        case "year3":
-            createHtml(Goalist[list],
-                "#headingFive button",
-                "#collapseFive .todo",
-                "#collapseFive .done");
-            break;
-        case "year5":
-            createHtml(Goalist[list],
-                "#headingSix button",
-                "#collapseSix .todo",
-                "#collapseSix .done");
-            break;
+        }
+    }
+    let goal=$('#GoalTitle').value;
+    if(goal!='' && goal.length>=3){
+        console.log(name);
+        Goalist[name].arr.push({title:goal,status:false});
+        $('#GoalTitle').value='';
+        writeGoals();
     }
 }

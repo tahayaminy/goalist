@@ -1,3 +1,27 @@
+.month {
+  color: #e2eafc;
+}
+
+.month3 {
+  color: #d7e3fc;
+}
+
+.month6 {
+  color: #ccdbfd;
+}
+
+.year {
+  color: #c1d3fe;
+}
+
+.year3 {
+  color: #b6ccfe;
+}
+
+.year5 {
+  color: #abc4ff;
+}
+
 article {
   width: 90%;
   min-width: 300px;
@@ -22,6 +46,69 @@ body {
   color: #eeeeee;
 }
 
+.modal-content {
+  color: #364f6b;
+  background-color: #eeeeee;
+}
+.modal-content .modal-header .btn-close {
+  margin-right: auto;
+  margin-left: 0;
+}
+.modal-content .btn-close:focus {
+  box-shadow: 0 0 0 0.25rem rgba(54, 79, 107, 0.25);
+}
+.modal-content .form-control:focus {
+  color: #364f6b;
+  caret-color: #364f6b;
+  background-color: #fff;
+  border-color: #ffc85b;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(255, 200, 91, 0.25);
+}
+.modal-content .dropdown-menu {
+  background-color: #364f6b;
+}
+.modal-content .dropdown-menu .dropdown-item {
+  transition: 0.2s ease-out;
+}
+.modal-content .dropdown-menu .dropdown-item:hover {
+  color: #364f6b;
+  background-color: #ffc85b;
+}
+.modal-content .btn-period {
+  color: #ffc85b;
+  border-color: #ffc85b;
+}
+.modal-content .btn-period:hover, .modal-content .btn-period:focus {
+  color: #364f6b;
+  background-color: #ffc85b;
+}
+.modal-content .btn-period:focus {
+  box-shadow: 0 0 0 0.25rem rgba(255, 200, 91, 0.5);
+}
+.modal-content .modal-footer .btn-save {
+  color: #379956;
+  border-color: #379956;
+}
+.modal-content .modal-footer .btn-save:hover, .modal-content .modal-footer .btn-save:focus {
+  color: #eeeeee;
+  background-color: #379956;
+}
+.modal-content .modal-footer .btn-save:focus {
+  box-shadow: 0 0 0 0.25rem rgba(55, 153, 86, 0.5);
+}
+.modal-content .modal-footer .btn-rescind {
+  color: #364f6b;
+  border-color: #364f6b;
+}
+.modal-content .modal-footer .btn-rescind:hover, .modal-content .modal-footer .btn-rescind:focus {
+  color: #eeeeee;
+  background-color: #364f6b;
+}
+.modal-content .modal-footer .btn-rescind:focus {
+  box-shadow: 0 0 0 0.25rem rgba(54, 79, 107, 0.5);
+}
+
 .done {
   color: rgba(238, 238, 238, 0.5);
   text-decoration: line-through;
@@ -44,7 +131,6 @@ body {
 }
 
 .accordion-button {
-  color: #eeeeee;
   display: flex;
 }
 .accordion-button:focus {

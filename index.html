@@ -19,13 +19,13 @@
 <body dir="rtl">
 <article class="mx-auto rounded">
     <div dir="ltr" class="mt-4">
-        <i class="bi bi-plus-square-dotted text-3xl"></i>
+        <i data-bs-toggle="modal" data-bs-target="#exampleModal" class="bi bi-plus-square-dotted text-3xl cursor-pointer"></i>
     </div>
     <section class="mt-4">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button class="accordion-button month" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         این ماه (<span class="length"></span>)
                         <span class="date mr-2 text-xs opacity-75"></span>
                     </button>
@@ -41,7 +41,7 @@
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="accordion-button month3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         سه ماه (<span class="length"></span>)
                         <span class="date mr-2 text-xs opacity-75"></span>
                     </button>
@@ -57,7 +57,7 @@
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <button class="accordion-button month6 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         شش ماه (<span class="length"></span>)
                         <span class="date mr-2 text-xs opacity-75"></span>
                     </button>
@@ -73,7 +73,7 @@
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFour">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <button class="accordion-button year collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                         امسال (<span class="length"></span>)
                         <span class="date mr-2 text-xs opacity-75"></span>
                     </button>
@@ -89,7 +89,7 @@
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingFive">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    <button class="accordion-button year3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                         سه سال (<span class="length"></span>)
                         <span class="date mr-2 text-xs opacity-75"></span>
                     </button>
@@ -105,7 +105,7 @@
             </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingSix">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                    <button class="accordion-button year5 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
                         پنج سال (<span class="length"></span>)
                         <span class="date mr-2 text-xs opacity-75"></span>
                     </button>
@@ -122,8 +122,71 @@
         </div>
     </section>
 </article>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header flex">
+                <h5 class="modal-title" id="exampleModalLabel">هدف جدید</h5>
+                <button type="button" class="btn-close bi bi-x-lg" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="GoalTitle">
+                </div>
+                <div class="dropdown dropstart">
+                    <button dir="ltr" class="btn btn-period dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        مدت
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <label dir="rtl" class="dropdown-item relative cursor-pointer text-right month">
+                                <i class="bi bi-calendar-date ml-3"></i>این ماه
+                                <input checked type="radio" name="period" class="absolute invisible left-0 top-0" value="month">
+                            </label>
+                        </li>
+                        <li>
+                            <label dir="rtl" class="dropdown-item relative cursor-pointer text-right month3">
+                                <i class="bi bi-calendar2-month ml-3"></i>سه ماه
+                                <input type="radio" name="period" class="absolute invisible left-0 top-0" value="month3">
+                            </label>
+                        </li>
+                        <li>
+                            <label dir="rtl" class="dropdown-item relative cursor-pointer text-right month6">
+                                <i class="bi bi-table ml-3"></i>شش ماه
+                                <input type="radio" name="period" class="absolute invisible left-0 top-0" value="month6">
+                            </label>
+                        </li>
+                        <li>
+                            <label dir="rtl" class="dropdown-item relative cursor-pointer text-right year">
+                                <i class="bi bi-journal-text ml-3"></i>امسال
+                                <input type="radio" name="period" class="absolute invisible left-0 top-0" value="year">
+                            </label>
+                        </li>
+                        <li>
+                            <label dir="rtl" class="dropdown-item relative cursor-pointer text-right year3">
+                                <i class="bi bi-journals ml-3"></i>۳ سال
+                                <input type="radio" name="period" class="absolute invisible left-0 top-0" value="year3">
+                            </label>
+                        </li>
+                        <li>
+                            <label dir="rtl" class="dropdown-item relative cursor-pointer text-right year5">
+                                <i class="bi bi-flag-fill ml-3"></i>۵ سال
+                                <input type="radio" name="period" class="absolute invisible left-0 top-0" value="year5">
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-rescind" data-bs-dismiss="modal">لغو</button>
+                <button onclick="add()" type="button" class="btn btn-save">افزودن</button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="ParsiDate.js"></script>
-<script src="index.js?v=1"></script>
+<script src="index.js"></script>
 </html>
