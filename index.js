@@ -1,7 +1,19 @@
 let Goalist;
+let pd=new ParsiDate();
 if(localStorage.getItem("goalist")!=null){
     let local=localStorage.getItem("goalist");
     Goalist=JSON.parse(local);
+    if(pd.month!=Goalist["month"].date.m){
+        Goalist["month"].date.m=pd.month;
+        let i=0;
+        for(let goal of Goalist["month"].arr){
+            if(goal.status){
+                Goalist["month"].arr.splice(i,1)
+            }
+            i++;
+        }
+        localStorage.setItem("goalist",`${JSON.stringify(Goalist)}`);
+    }
 }else{
     let data={
         "month":{
@@ -9,7 +21,7 @@ if(localStorage.getItem("goalist")!=null){
                 {title:"ساخت اپ بدنسازی",status:false},
                 {title:"ساخت اپ بهینه ساز تایم",status:false},
                 {title:"ساخت اپ هدف",status:false}
-            ],date:{y:1401,m:1}
+            ],date:{y:1401,m:pd.month}
         },
         "month3":{
             arr:[
@@ -49,7 +61,6 @@ if(localStorage.getItem("goalist")!=null){
 const $ = el => {
     return document.querySelector(el);
 }
-let pd=new ParsiDate();
 function createHtml(name,btn,todoCont,doneCont,id) {
     let list=Goalist[name];
     let todo = '';
