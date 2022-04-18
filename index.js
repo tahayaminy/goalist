@@ -1,42 +1,51 @@
-let Goalist = {
-    "month":{
-        arr:[
-            {title:"ساخت اپ بدنسازی",status:true},
-            {title:"ساخت اپ بهینه ساز تایم",status:true},
-            {title:"ساخت اپ هدف",status:false}
-        ],date:{y:1401,m:1}
-    },
-    "month3":{
-        arr:[
-            {title:"40 کیلوگرم",status:false}
-        ],date:{y:1401,m:3}
-    },
-    "month6": {
-        arr:[
-            {title:"50 کیلوگرم",status:false,},
-            {title:"عکس گرفتن",status:false}
-        ],date:{y:1401,m:6}
-    },
-    "year": {
-        arr:[
-            {title:"درآمد ماهیانه ۱۰ میلیون تومان",status:false},
-            {title:"آماده برای ارشد",status:false},
-            {title:"فروهر",status:false},
-            {title:"60 کیلوگرم",status:false}
-        ],date:{y:1402,m:0}
-    },
-    "year3": {
-        arr:[
-            {title:"خرید خانه",status:false},
-            {title:"خرید لپ‌تاپ",status:false}
-        ],date:{y:1404,m:0}
-    },
-    "year5": {
-        arr:[
-            {title:"خرید ماشین",status:false},
-        ],date:{y:1406,m:0}
-    }
-};
+let Goalist;
+if(localStorage.getItem("goalist")!=null){
+    let local=localStorage.getItem("goalist");
+    Goalist=JSON.parse(local);
+}else{
+    let data={
+        "month":{
+            arr:[
+                {title:"ساخت اپ بدنسازی",status:false},
+                {title:"ساخت اپ بهینه ساز تایم",status:false},
+                {title:"ساخت اپ هدف",status:false}
+            ],date:{y:1401,m:1}
+        },
+        "month3":{
+            arr:[
+                {title:"40 کیلوگرم",status:false}
+            ],date:{y:1401,m:3}
+        },
+        "month6": {
+            arr:[
+                {title:"50 کیلوگرم",status:false,},
+                {title:"عکس گرفتن",status:false}
+            ],date:{y:1401,m:6}
+        },
+        "year": {
+            arr:[
+                {title:"درآمد ماهیانه ۱۰ میلیون تومان",status:false},
+                {title:"آماده برای ارشد",status:false},
+                {title:"فروهر",status:false},
+                {title:"60 کیلوگرم",status:false}
+            ],date:{y:1402,m:0}
+        },
+        "year3": {
+            arr:[
+                {title:"خرید خانه",status:false},
+                {title:"خرید لپ‌تاپ",status:false}
+            ],date:{y:1404,m:0}
+        },
+        "year5": {
+            arr:[
+                {title:"خرید ماشین",status:false},
+            ],date:{y:1406,m:0}
+        }
+    };
+    Goalist=data;
+    localStorage.setItem("goalist",`${JSON.stringify(data)}`);
+}
+
 const $ = el => {
     return document.querySelector(el);
 }
@@ -66,7 +75,12 @@ function createHtml(name,btn,todoCont,doneCont,id) {
         }
     }
     $(btn+" .length").innerText=i;
-    $(btn+" .date").innerText=(pd.year==list.date.y) ? solarMonth[list.date.m]: list.date.y;
+    if(pd.year==list.date.y){
+
+        $(btn+" .date").innerText=(name=="month") ? pd.now.month: solarMonth[list.date.m];
+    }else{
+        $(btn+" .date").innerText=list.date.y;
+    }
     $(todoCont).innerHTML=todo;
     $(doneCont).innerHTML=done;
 }
@@ -121,6 +135,7 @@ function writeGoals(){
                 break;
         }
     }
+    localStorage.setItem("goalist",`${JSON.stringify(Goalist)}`);
 }
 writeGoals();
 function add(){
