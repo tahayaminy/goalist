@@ -32,7 +32,6 @@ class ParsiDate{
             day+=index;
             i++;
         }
-        day++;
         return {year:Number(year),month:solarMonth[month],day:Number(day)};
     }
     get year(){
@@ -67,7 +66,6 @@ class ParsiDate{
             day+=index;
             i++;
         }
-        day++;
         return Number(day);
     }
 }
