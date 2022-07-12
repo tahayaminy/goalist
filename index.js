@@ -165,3 +165,9 @@ function add(){
         writeGoals();
     }
 }
+if(pd.month==3){
+    $('#m-3').classList.add('line-through');
+}
+if(pd.month==6){
+    $('#m-6').classList.add('line-through');
+}
