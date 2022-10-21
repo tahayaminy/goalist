@@ -5,13 +5,13 @@ if(localStorage.getItem("goalist")!=null){
     Goalist=JSON.parse(local);
     if(pd.month!=Goalist["month"].date.m){
         Goalist["month"].date.m=pd.month;
-        let i=0;
+        let arr=[];
         for(let goal of Goalist["month"].arr){
-            if(goal.status){
-                Goalist["month"].arr.splice(i,1)
+            if(!goal.status){
+                arr.push(goal);
             }
-            i++;
         }
+        Goalist["month"].arr=arr;
         localStorage.setItem("goalist",`${JSON.stringify(Goalist)}`);
     }
 }else{
@@ -19,8 +19,8 @@ if(localStorage.getItem("goalist")!=null){
         "month":{
             arr:[
                 {title:"ساخت اپ بدنسازی",status:false},
-                {title:"ساخت اپ بهینه ساز تایم",status:false},
-                {title:"ساخت اپ هدف",status:false}
+                {title:"ساخت اپ بهینه ساز تایم",status:true},
+                {title:"ساخت اپ هدف",status:true}
             ],date:{y:1401,m:pd.month}
         },
         "month3":{
